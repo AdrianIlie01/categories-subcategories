@@ -139,24 +139,24 @@ export class CategoryLinksService {
     }
   }
 
+//   async remove(id: number) {
+//     try {
+//       const categoryLink = await CategoryLinkEntity.find({
+//         where: {
+//             id: id
+//         },
+//       });
+//       const deletedCategoryLink = await Promise.all(
+//           categoryLink.map(async (row: CategoryLinkEntity) => {
+//        return  await row.remove();
+//       })
+//       );
+//       return deletedCategoryLink;
+//     } catch (e) {
+//       throw  new BadRequestException(e.message);
+//     }
+//   }
   async remove(id: number) {
-    try {
-      const categoryLink = await CategoryLinkEntity.find({
-        where: {
-            id: id
-        },
-      });
-      const deletedCategoryLink = await Promise.all(
-          categoryLink.map(async (row: CategoryLinkEntity) => {
-       return  await row.remove();
-      })
-      );
-      return deletedCategoryLink;
-    } catch (e) {
-      throw  new BadRequestException(e.message);
-    }
-  }
-  async removeCategoryLink(id: number) {
     try {
       const categoryLink = await CategoryLinkEntity.find({
         relations: ['category', 'parent'],
