@@ -124,7 +124,9 @@ export class CategoryService {
         where: {id: id},
       });
 
-      await this.categoryLinksService.remove(category.id);
+      await Promise.all(
+       await this.categoryLinksService.remove(category.id)
+      );
       await category.remove();
 
       return {
